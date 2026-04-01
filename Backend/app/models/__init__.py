@@ -1,5 +1,17 @@
-from app.models.user import User
+from app.models.users import (
+    User, 
+    UserObject, 
+    UserCreate, 
+    UserUpdate, 
+    UserDelete, 
+    UserResponse
+)
 
 __all__ = [
-    "User"
+    "User", 
+    "UserObject", 
+    "UserCreate", 
+    "UserUpdate",
+    "UserDelete",
+    "UserResponse"
 ]

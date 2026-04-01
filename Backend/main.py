@@ -4,6 +4,7 @@ import os
 from flask_restx import Api
 from app.routes import home, user
 from app.database import db, migrate
+import certifi
 
 
 # load environment variables from .env file
@@ -14,6 +15,17 @@ app = Flask(__name__)
 
 app.config['SWAGGER_UI_DOC_EXPANSION'] = 'list'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("TIDB_DATABASE_URL")
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    "connect_args": {
+        "ssl": {
+            "ssl_verify_cert": True,
+            "ssl_verify_identity": True,
+            # If it still fails, you may need to add: 
+            "ssl_ca": certifi.where()
+        }
+    },
+    "pool_recycle": 300, # Recommended by TiDB docs to prevent timeouts
+}
 
 # bind the db to the app
 db.init_app(app)
