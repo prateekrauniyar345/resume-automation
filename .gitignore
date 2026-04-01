@@ -207,3 +207,7 @@ resume_tailoring/output/
 
 # ignore everything that is in the extra folder
 /extras/
+
+
+# ignore the ._ files created by macOS
+._*
