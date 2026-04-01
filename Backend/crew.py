@@ -2,9 +2,9 @@ from crewai import Agent, Task, Crew
 import os
 from pathlib import Path
 from typing import Optional
-from resume_tailoring.tools.pdf_parser import extract_resume_text
-from resume_tailoring.tools.job_parser import extract_job_info
-from resume_tailoring.tools.keyword_matcher import match_keywords
+from Backend.app.tools.pdf_parser import extract_resume_text
+from Backend.app.tools.job_parser import extract_job_info
+from Backend.app.tools.keyword_matcher import match_keywords
 
 def get_resume_path() -> str:
     """Get resume path from user input with validation."""
